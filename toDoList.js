@@ -34,8 +34,12 @@ function addTaskNote(notes){
 	listItem.appendChild(taskNote);
 }
 
-function taskComplete(){
-	
+function taskComplete(list){
+	list.setAttribute("checked", true);
+	var completedTask = list.parentElement;
+	list.parentElement.parentElement.removeChild(list.parentNode);
+	document.getElementById("completed").querySelector("ul").appendChild(completedTask);
+
 }
 
 function isImportance(){	
@@ -91,6 +95,10 @@ addTaskButton.addEventListener("click", function(){
 });
 
 
+//When checkbox in to do list is clicked
+document.getElementById("toDo").querySelector("input[type=checkbox]").addEventListener("click",function(){
+	taskComplete(this);
+});
 
 
 
