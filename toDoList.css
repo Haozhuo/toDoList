@@ -1,3 +1,8 @@
 .title, textarea{
 	display: block;
 }
+
+#toDo input[type=text]{
+	display: none;
+}
+

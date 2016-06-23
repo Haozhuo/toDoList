@@ -9,9 +9,13 @@ function addTaskName(taskName){
 	var label = document.createElement("label");
 	//set label's inner text
 	label.innerText = taskName;
-
+	//add an inout box and hide it in CSS
+	var inputForEdit = document.createElement("input");
+	inputForEdit.setAttribute("type","text");
+	//add items
 	listItem.appendChild(inputCheckbox);
 	listItem.appendChild(label);
+	listItem.appendChild(inputForEdit);
 }
 
 function addButtons(){
@@ -47,7 +51,10 @@ function deleteTask(list){
 }
 
 function editTask(list){
-
+	var text = list.parentElement.querySelector("label").innerText;
+	list.parentElement.querySelector("label").style.visibility = "hidden";
+	list.parentElement.querySelector("input[type=text]").value = text;
+	list.parentElement.querySelector("input[type=text]").style.display = "inline-block";
 }
 
 function isImportance(){	
@@ -116,7 +123,7 @@ $("#toDo").on("click", ".delete", function(){
 });
 
 //When edit buttion is pressed
-$("#toDo").on("click",".edit",function(){
+$("#toDo").on("click", ".edit", function(){
 	editTask(this);
 }); 
 
