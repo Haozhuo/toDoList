@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="toDoList.css">
+	<title>To Do List</title>
+</head>
+
+<body>
+	<div id="add">
+		<label for="new_task" class="title">Add task:</label>
+		<input type="text" id="new_task" name="task_name">
+		<label class="title">Importance</label>
+		<input type="radio" id="important_task" name="importance"><label for="important_task">Prioritized task</label>
+		<input type="radio" id="normal_task" name="importance"><label for="normal_task">Normal task</label>
+		<label class="title">Notes</label>
+		<textarea id="note" name="task_note"></textarea>
+
+		<button>Add</button>
+	</div>
+
+	<div id="toDo">
+		<h1>To Do List</h1>
+		<div id="prioritize">
+			<h2>Important tasks</h2>
+			<ul>
+				<input type="checkbox"><label>dahkj</label>
+				<button class="edit">edit</button>
+				<button class="delete">delete</button>
+			</ul>
+		</div>
+
+		<div id="normal">
+			<h2>Normal tasks</h2>
+		</div>
+	</div>
+
+	<div id="completed">
+		<h1>Completed Tasks</h1>
+			<ul>
+				<input type="checkbox"><label>dahkj</label>
+				<button class="edit">edit</button>
+				<button class="delete">delete</button>
+			</ul>
+	</div>
+
+
+	<script type="text/javascript" src="toDoList.js"></script>
+</body>
+</html>
