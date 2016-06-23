@@ -34,11 +34,19 @@ function addTaskNote(notes){
 	listItem.appendChild(taskNote);
 }
 
+//list parameter is this: <input tag>
 function taskComplete(list){
 	list.setAttribute("checked", true);
 	var completedTask = list.parentElement;
 	list.parentElement.parentElement.removeChild(list.parentNode);
 	document.getElementById("completed").querySelector("ul").appendChild(completedTask);
+}
+
+function deleteTask(list){
+	list.parentElement.parentElement.removeChild(list.parentNode);
+}
+
+function editTask(list){
 
 }
 
@@ -96,9 +104,21 @@ addTaskButton.addEventListener("click", function(){
 
 
 //When checkbox in to do list is clicked
-document.getElementById("toDo").querySelector("input[type=checkbox]").addEventListener("click",function(){
+//delete the task from to do list
+//using event delegation
+$("#toDo").on("click", "input[type=checkbox]",function(){
 	taskComplete(this);
 });
+
+//When delete button is pressed
+$("#toDo").on("click", ".delete", function(){
+	deleteTask(this);
+});
+
+//When edit buttion is pressed
+$("#toDo").on("click",".edit",function(){
+	editTask(this);
+}); 
 
 
 
