@@ -2,7 +2,15 @@
 	display: block;
 }
 
-#toDo input[type=text]{
+ul li input[type=text]{
 	display: none;
+}
+
+.editMode label {
+	display: none;
+}
+
+.editMode input[type=text]{
+	display: inline-block;
 }
 

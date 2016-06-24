@@ -46,29 +46,33 @@ function taskComplete(list){
 	document.getElementById("completed").querySelector("ul").appendChild(completedTask);
 }
 
+function taskIncomplete(list){
+	list.setAttribute("checked", false);
+	var incompleteTask = list.parentElement;
+	list.parentElement.parentElement.removeChild(list.parentNode);
+	document.getElementById("toDo").querySelector("ul").appendChild(incompleteTask);
+	console.log("here");
+}
+
+
 function deleteTask(list){
 	list.parentElement.parentElement.removeChild(list.parentNode);
 }
 
 function editTask(list){
-	var text = list.parentElement.querySelector("label").innerText;
-	list.parentElement.querySelector("label").style.visibility = "hidden";
-	list.parentElement.querySelector("input[type=text]").value = text;
-	list.parentElement.querySelector("input[type=text]").style.display = "inline-block";
+	if(!list.parentElement.classList.contains("editMode"))
+	{
+		list.parentElement.classList.toggle("editMode");
+		var text = list.parentElement.querySelector("label").innerText;
+		list.parentElement.querySelector("input[type=text]").value = text;
+	}
+
+	else
+	{
+		list.parentElement.querySelector("label").innerText = list.parentElement.querySelector("input[type=text]").value;
+		list.parentElement.classList.toggle("editMode");
+	}
 }
-
-function isImportance(){	
-}
-
-
-
-function createToItem(){
-
-}
-
-
-function appendTo(){}
-
 
 var addTaskButton = document.getElementById("add").querySelector("button");
 
@@ -127,6 +131,18 @@ $("#toDo").on("click", ".edit", function(){
 	editTask(this);
 }); 
 
+
+$("#completed").on("click",".edit",function(){
+	editTask(this);
+});
+
+$("#completed").on("click", ".delete", function(){
+	deleteTask(this);
+});
+
+$("#completed").on("click", "input[type=checkbox]",function(){
+	taskIncomplete(this);
+})
 
 
 
